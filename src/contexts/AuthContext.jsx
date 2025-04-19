@@ -9,8 +9,14 @@ export const AuthProvider = ({ children }) => {
   });
 
   const login = (userData) => {
-    localStorage.setItem("user", JSON.stringify(userData));
-    setUser(userData);
+    // Make sure the name is part of the userData passed in here
+    const cleanUserData = {
+      name: userData.name,
+      email: userData.email,
+      token: userData.token || "", // optional
+    };
+    localStorage.setItem("user", JSON.stringify(cleanUserData));
+    setUser(cleanUserData);
   };
 
   const logout = () => {

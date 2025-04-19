@@ -1,0 +1,160 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* Container */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Header */
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #1e88e5;
+}
+
+.dashboard-header p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Profile Section */
+.dashboard-profile {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.profile-card {
+  flex: 2;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card h2 {
+  margin-bottom: 15px;
+  color: #1e88e5;
+}
+
+.profile-card p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+/* Stats Cards */
+.profile-stats {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+  font-size: 1.2rem;
+  color: #1e88e5;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Actions Section */
+.dashboard-actions {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.dashboard-actions h2 {
+  margin-bottom: 20px;
+  color: #1e88e5;
+}
+
+.action-btn {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+  background-color: #1565c0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-profile {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.shipping-form {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+  max-width: 600px;
+}
+
+.shipping-form input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+.shipping-form button {
+  padding: 0.75rem;
+  background-color: #111;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.dashboard-shipping {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f6f6f6;
+  border-radius: 1rem;
+}

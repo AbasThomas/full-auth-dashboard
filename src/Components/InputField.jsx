@@ -1,6 +1,6 @@
 // InputField.jsx
 import { Controller } from "react-hook-form";
-
+import '../Components/Styles/InputField.css'; // Adjust the path as necessary
 const InputField = ({ name, control, label, type = "text", error }) => (
   <div className="form-group">
     <label htmlFor={name}>{label}</label>

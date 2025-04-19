@@ -1,0 +1,39 @@
+/* Input Field Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Label */
+  .form-group label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #374151; /* gray-700 */
+  }
+  
+  /* Input Field */
+  .form-control {
+    padding: 0.65rem 0.75rem;
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-control:focus {
+    border-color: #2563eb; /* blue-600 */
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); /* blue-600 ring */
+    outline: none;
+  }
+  
+  /* Error state */
+  .form-control.has-error {
+    border-color: #dc2626; /* red-600 */
+  }
+  
+  .error-text {
+    color: #dc2626;
+  }  

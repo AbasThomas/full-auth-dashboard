@@ -1,0 +1,84 @@
+/* Overall container for the registration form */
+.registration-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    font-family: "Roboto", sans-serif;
+  }
+  
+  /* Title styling for the form */
+  .registration-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Form styling */
+  .registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Input fields styling */
+  .input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .input-field label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .input-field input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .input-field input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Error message styling */
+  .input-field .error {
+    font-size: 0.85rem;
+    color: #e74c3c;
+    margin-top: 5px;
+  }
+  
+  /* Submit button styling */
+  .registration-button {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+  }
+  
+  .registration-button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  .registration-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
