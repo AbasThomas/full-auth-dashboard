@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import InputField from "../components/InputField";
 import { useNavigate } from "react-router-dom";
 import "../components/Styles/UserRegistrationForm.css";
+import GoogleLoginButton from "../components/GoogleLoginButton";
 
 const UserRegistrationForm = () => {
   const navigate = useNavigate();
@@ -79,7 +80,14 @@ const UserRegistrationForm = () => {
         >
           {loading ? "Registering..." : "Register"}
         </button>
-      </form>
+        
+      </form><GoogleLoginButton
+  onSuccess={(user) => {
+    // You can also call your backend to create/login this user
+    console.log("Google user info:", user);
+    localStorage.setItem("user", JSON.stringify(user));
+    navigate("/dashboard");
+  }}/>
     </div>
   );
 };

@@ -6,15 +6,15 @@ import {
 import ProtectedRoute from "./routes/ProtectedRoute";
 import Navbar from "./Components/Navbar";
 
-import DashboardPage from "./pages/DashboardPage";
-import ProfilePage from "./pages/ProfilePage";
-import LoginForm from "./pages/LoginForm";
+import DashboardPage from "./Pages/DashboardPage";
+import ProfilePage from "./Pages/ProfilePage";
+import LoginForm from "./Pages/LoginForm";
 import UserRegistrationForm from "./pages/UserRegistration";
-import HomePage from "./pages/HomePage";
-import SuperAdminDashboard from "./pages/admin/SuperAdminDashboard";
+import HomePage from "./Pages/HomePage";
+import SuperAdminDashboard from "./Pages/admin/SuperAdminDashboard";
 
 import { Toaster } from "react-hot-toast";
-import CreateProductForm from "./pages/admin/CreateProductForm";
+import CreateProductForm from "./Pages/admin/CreateProductForm";
 import AdminProtectedRoute from "./routes/AdminProtectedRoute";
 import ProductPage from "./Pages/ProductPage";
 import SingleProductPage from "./Pages/SingleProductPage ";
