@@ -1,6 +1,6 @@
 import { useAuth } from "../../contexts/AuthContext";
 import { useEffect, useState } from "react";
-import { fetchUsersList, fetchProductsList } from "../../services/adminService";
+import { fetchUsersList, fetchProductsList } from "../../services/AdminService";
 import { Outlet, Link } from "react-router-dom";
 // import "../../components/styles/SuperAdminDashboard.css";
 

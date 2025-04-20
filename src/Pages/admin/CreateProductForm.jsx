@@ -4,7 +4,7 @@ import {
   fetchBrands,
   fetchCategories,
   fetchColors,
-} from "../../services/adminService";
+} from "../../services/AdminService";
 import toast from "react-hot-toast";
 import "../../Components/styles/CreateProductForm.css";
 
