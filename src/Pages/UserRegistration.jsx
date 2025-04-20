@@ -5,10 +5,10 @@ import { registerUser } from "../services/userService";
 import { userSchema } from "../validations/userSchema";
 import toast from "react-hot-toast";
 // import InputField from '../Components/InputField';
-import InputField from "../components/InputField";
+import InputField from "../Components/InputField";
 import { useNavigate } from "react-router-dom";
-import "../components/Styles/UserRegistrationForm.css";
-import GoogleLoginButton from "../components/GoogleLoginButton";
+import "../Components/Styles/UserRegistrationForm.css";
+import GoogleLoginButton from "../Components/GoogleLoginButton";
 
 const UserRegistrationForm = () => {
   const navigate = useNavigate();
