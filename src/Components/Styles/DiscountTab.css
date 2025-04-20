@@ -59,4 +59,98 @@
     font-size: 14px;
     cursor: pointer;
   }
+  .discount-tab {
+    background-color: #fef2f2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .left-section {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .deal-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #ef4444;
+    font-weight: 500;
+  }
+  
+  .deal-icon {
+    font-size: 16px;
+  }
+  
+  .right-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .ends-text {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .timer-box {
+    background-color: #ef4444;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 32px;
+    text-align: center;
+  }
+  
+  .view-deals-btn {
+    margin-left: 10px;
+    background: none;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  
+  .view-deals-btn:hover {
+    background-color: #ef4444;
+    color: white;
+  }
+  
+  /* Responsive rules */
+  @media (max-width: 768px) {
+    .discount-tab {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px;
+    }
+  
+    .left-section,
+    .right-section {
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .view-deals-btn {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
   

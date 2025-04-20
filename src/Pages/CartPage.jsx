@@ -2,8 +2,11 @@ import React from "react";
 import { useCart } from "../contexts/CartContext";
 import "../Components/Styles/CartPage.css";
 import { FaTrash, FaPlus, FaMinus, FaShoppingCart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"; // 👈 import navigate
 
 const CartPage = () => {
+  const navigate = useNavigate();
+
   const { cart, dispatch } = useCart();
 
   const handleRemove = (id) => {
@@ -53,7 +56,9 @@ const CartPage = () => {
           ))}
           <div className="cart-summary">
             <h3>Total: ₦{total.toLocaleString()}</h3>
-            <button className="checkout-btn">Proceed to Checkout</button>
+            <button onClick={() => navigate("/checkout")} className="checkout-btn">
+        Proceed to Checkout
+      </button>
           </div>
         </div>
       )}

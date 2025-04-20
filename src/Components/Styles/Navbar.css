@@ -1,128 +1,190 @@
-/* Styles/Navbar.css */
+  /* Styles/Navbar.css */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .nav-container {
-    width: 100%;
-    padding: 12px 24px;
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .nav-container {
+      width: 100%;
+      padding: 12px 24px;
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      font-family: sans-serif;
+    }
+    
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    
+    .logo {
+      color: #ef4444;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    
+    .nav-links li {
+      cursor: pointer;
+      font-size: 14px;
+      color: #444;
+      transition: color 0.2s;
+    }
+    
+    .nav-links li:hover {
+      color: #ef4444;
+    }
+    
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .search-bar {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 6px 8px;
+    }
+    
+    .search-bar input {
+      border: none;
+      outline: none;
+      padding: 4px;
+      font-size: 14px;
+    }
+    
+    .search-icon {
+      color: #888;
+      margin-right: 6px;
+    }
+    
+    .icon {
+      font-size: 18px;
+      cursor: pointer;
+      color: #444;
+    }
+    
+    .cart-icon {
+      position: relative;
+    }
+    
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: red;
+      color: white;
+      font-size: 10px;
+      padding: 2px 5px;
+      border-radius: 9999px;
+    }
+    
+    .btn {
+      padding: 6px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    
+    .sign-in {
+      background-color: white;
+      border: 1px solid #ccc;
+      color: #333;
+    }
+    
+    .sign-up {
+      background-color: #ef4444;
+      color: white;
+      border: none;
+    }
+    .add-to-cart-btn {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .add-to-cart-btn:hover {
+      background-color: #555;
+    }
+    /* Base styles omitted for brevity; add these below your current CSS */
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #444;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
     background-color: white;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .navbar-left {
+    flex: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    font-family: sans-serif;
   }
-  
-  .navbar-left {
-    display: flex;
-    align-items: center;
-    gap: 32px;
+
+  .search-bar {
+    display: none;
   }
-  
-  .logo {
-    color: #ef4444;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav-links li {
-    cursor: pointer;
-    font-size: 14px;
-    color: #444;
-    transition: color 0.2s;
-  }
-  
-  .nav-links li:hover {
-    color: #ef4444;
-  }
-  
+
   .navbar-right {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 10px;
   }
-  
-  .search-bar {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 6px 8px;
+
+  .hamburger {
+    display: block;
   }
-  
-  .search-bar input {
-    border: none;
-    outline: none;
-    padding: 4px;
-    font-size: 14px;
+
+  .welcome-text,
+  .btn.sign-in,
+  .btn.sign-up,
+  .logout-btn {
+    display: none;
   }
-  
-  .search-icon {
-    color: #888;
-    margin-right: 6px;
-  }
-  
-  .icon {
-    font-size: 18px;
-    cursor: pointer;
-    color: #444;
-  }
-  
-  .cart-icon {
-    position: relative;
-  }
-  
-  .cart-badge {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background-color: red;
-    color: white;
-    font-size: 10px;
-    padding: 2px 5px;
-    border-radius: 9999px;
-  }
-  
-  .btn {
-    padding: 6px 14px;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  .sign-in {
-    background-color: white;
-    border: 1px solid #ccc;
-    color: #333;
-  }
-  
-  .sign-up {
-    background-color: #ef4444;
-    color: white;
-    border: none;
-  }
-  .add-to-cart-btn {
-    margin-top: 8px;
-    padding: 8px 12px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .add-to-cart-btn:hover {
-    background-color: #555;
-  }
-  
+}

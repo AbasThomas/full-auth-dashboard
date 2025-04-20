@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Styles/Navbar.css';
 import { useNavigate } from 'react-router-dom';
 import { FaHeart, FaShoppingCart, FaSearch } from 'react-icons/fa';
@@ -9,8 +9,17 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { cart } = useCart();
   const { user, logout } = useAuth();
+  const [searchTerm, setSearchTerm] = useState('');
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
+      setSearchTerm('');
+    }
+  };
 
   return (
     <nav className="nav-container">
@@ -26,10 +35,15 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-right">
-        <div className="search-bar">
+        <form className="search-bar" onSubmit={handleSearch}>
           <FaSearch className="search-icon" />
-          <input type="text" placeholder="Search products..." />
-        </div>
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </form>
 
         <FaHeart className="icon" />
 
@@ -38,7 +52,6 @@ const Navbar = () => {
           {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
         </div>
 
-        {/* Auth Section */}
         {user ? (
           <>
             <span className="welcome-text">Hi, {user.fullName || "User"}</span>

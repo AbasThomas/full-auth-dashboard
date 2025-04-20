@@ -12,7 +12,7 @@ import LoginForm from "./Pages/LoginForm";
 import UserRegistrationForm from "./pages/UserRegistration";
 import HomePage from "./Pages/HomePage";
 import SuperAdminDashboard from "./Pages/admin/SuperAdminDashboard";
-
+import CheckoutPage from './Pages/CheckoutPage';
 import { Toaster } from "react-hot-toast";
 import CreateProductForm from "./Pages/admin/CreateProductForm";
 import AdminProtectedRoute from "./routes/AdminProtectedRoute";
@@ -21,6 +21,7 @@ import SingleProductPage from "./Pages/SingleProductPage ";
 import DiscountTab from "./Components/Discount";
 import HeroSection from "./Components/Hero";
 import CartPage from "./Pages/CartPage";
+import PaymentPage from "./Pages/PaymentPage";
 
 const App = () => {
   return (
@@ -35,6 +36,9 @@ const App = () => {
         <Route path="/register" element={<UserRegistrationForm />} />
         <Route path="/products/:id" element={<SingleProductPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/payment" element={<PaymentPage />} />
+
         {/* Protected routes */}
         <Route
           path="/profile"
