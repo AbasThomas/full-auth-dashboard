@@ -9,7 +9,7 @@ import Navbar from "./Components/Navbar";
 import DashboardPage from "./Pages/DashboardPage";
 import ProfilePage from "./Pages/ProfilePage";
 import LoginForm from "./Pages/LoginForm";
-import UserRegistrationForm from "./Pages/UserRegistration";
+import UserRegistrationForm from './Pages/UserRegistration'
 import HomePage from "./Pages/HomePage";
 import SuperAdminDashboard from "./Pages/admin/SuperAdminDashboard";
 import CheckoutPage from './Pages/CheckoutPage';
