@@ -6,7 +6,7 @@ import {
   fetchColors,
 } from "../../services/adminService";
 import toast from "react-hot-toast";
-import "../../components/styles/CreateProductForm.css";
+import "../../Components/styles/CreateProductForm.css";
 
 const CreateProductForm = () => {
   const [form, setForm] = useState({
