@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { loginUser } from "../services/userService";
 import { loginSchema } from "../validations/userSchema";
 import toast from "react-hot-toast";
-import InputField from "../Components/InputField";
+import InputField from "../Components/InputField.jsx";
 import { useNavigate } from "react-router-dom";
 import "../Components/styles/UserRegistrationForm.css";
 import { useAuth } from "../contexts/AuthContext";
