@@ -9,7 +9,7 @@ import Navbar from "./Components/Navbar";
 import DashboardPage from "./Pages/DashboardPage";
 import ProfilePage from "./Pages/ProfilePage";
 import LoginForm from "./Pages/LoginForm";
-// import UserRegistrationForm from './Pages/UserRegistration.jsx'
+import UserRegistrationForm from './Pages/UserRegistration.jsx'
 import HomePage from "./Pages/HomePage";
 import SuperAdminDashboard from "./Pages/admin/SuperAdminDashboard";
 import CheckoutPage from './Pages/CheckoutPage';
@@ -33,7 +33,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<ProductPage/>} />
         <Route path="/login" element={<LoginForm />} />
-        {/* <Route path="/register" element={<UserRegistrationForm />} /> */}
+        <Route path="/register" element={<UserRegistrationForm />} />
         <Route path="/products/:id" element={<SingleProductPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
