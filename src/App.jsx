@@ -21,7 +21,9 @@ import SingleProductPage from "./Pages/SingleProductPage ";
 import DiscountTab from "./Components/Discount";
 import HeroSection from "./Components/Hero";
 import CartPage from "./Pages/CartPage";
-import PaymentPage from "./Pages/PaymentPage";
+import DummyPayment from './Pages/DummyPayment'; // Adjust path if different
+
+// import PaymentPage from "./Pages/PaymentPage";
 
 const App = () => {
   return (
@@ -37,7 +39,7 @@ const App = () => {
         <Route path="/products/:id" element={<SingleProductPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/payment" element={<DummyPayment />} />
 
         {/* Protected routes */}
         <Route

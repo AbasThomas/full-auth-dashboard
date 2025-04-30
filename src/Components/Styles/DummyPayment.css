@@ -1,0 +1,161 @@
+.payment-wrapper {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .payment-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .tabs button {
+    flex: 1;
+    padding: 12px 0;
+    background: #222;
+    color: #ddd;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border-radius: 6px;
+    transition: background 0.3s;
+  }
+  
+  .tabs button.active,
+  .tabs button:hover {
+    background: #1a73e8;
+    color: #fff;
+  }
+  
+  .content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  /* Card Preview */
+  .card-preview {
+    background: linear-gradient(135deg, #5b00f5, #30005b);
+    color: #fff;
+    width: 320px;
+    height: 200px;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    font-family: monospace;
+  }
+  
+  .chip {
+    width: 40px;
+    height: 28px;
+    background: gold;
+    border-radius: 4px;
+  }
+  
+  .number {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+  
+  .footer {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 40px);
+  }
+  
+  .footer small {
+    font-size: 0.7rem;
+    opacity: 0.8;
+  }
+  
+  /* Bank/PayPal Info */
+  .info-box {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .info-box h2 {
+    margin-top: 0;
+  }
+  
+  /* Form */
+  .form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form label {
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+  
+  .form input {
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .note {
+    margin: 1rem 0;
+  }
+  
+  .btn-payment {
+    margin-top: 2rem;
+    padding: 14px;
+    background: linear-gradient(145deg, #5b00f5, #30005b);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .btn-payment:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .card-preview {
+      width: 100%;
+      height: auto;
+      padding-bottom: 56%;
+    }
+  }
+  
