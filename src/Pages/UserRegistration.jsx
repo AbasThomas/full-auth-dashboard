@@ -8,8 +8,7 @@ import toast from "react-hot-toast";
 import InputField from "../Components/InputField";
 import { useNavigate } from "react-router-dom";
 import "../Components/Styles/UserRegistrationForm.css";
-import GoogleLoginButton from "../Components/GoogleLoginButton";
-impot 
+import GoogleLoginButton from "../Components/GoogleLoginButton"; 
 const UserRegistrationForm = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
