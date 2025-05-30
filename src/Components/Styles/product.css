@@ -1,0 +1,119 @@
+.product-page {
+  padding: 2rem;
+  background: #f8f8f8;
+  min-height: 100vh;
+}
+
+/* Page title styling */
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+/* Grid layout for the product cards */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Product card style */
+.product-card {
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effects to match design image */
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Container for the product image */
+.product-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Fallback for missing image */
+.no-image {
+  height: 200px;
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Container for product details */
+.product-details {
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Product name styling */
+.product-name {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: #222;
+  font-weight: bold;
+}
+
+/* Product price styling */
+.product-price {
+  font-size: 1rem;
+  color: #e74c3c;
+  margin: 0 0 10px;
+}
+
+/* Star rating styling */
+.product-rating .star-rating {
+  display: inline-block;
+}
+
+.star-rating .star {
+  font-size: 1rem;
+  color: #ddd;
+  margin-right: 2px;
+}
+
+.star-rating .star.filled {
+  color: #f39c12;
+}
+
+/* Loading & error states */
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 2rem;
+}
+.floating-cart-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #222;
+  color: white;
+  padding: 16px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.floating-cart-btn:hover {
+  background-color: #444;
+}

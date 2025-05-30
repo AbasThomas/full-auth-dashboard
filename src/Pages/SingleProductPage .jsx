@@ -3,39 +3,38 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/apiClient";
 import { useCart } from "../contexts/CartContext";
 import "../Components/Styles/SingleProductPage.css";
-import { FaPlus, FaMinus, FaShoppingCart } from "react-icons/fa";
-
-const renderStars = (rating) => {
-  const filledStars = Math.round(Number(rating)) || 0;
-  const totalStars = 5;
-  return (
-    <div className="single-star-rating">
-      {Array.from({ length: totalStars }, (_, i) => (
-        <span key={i} className={i < filledStars ? "single-star filled" : "single-star"}>
-          ★
-        </span>
-      ))}
-    </div>
-  );
-};
+import { FaPlus, FaMinus, FaShoppingCart, FaStar, FaRegStar } from "react-icons/fa";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SingleProductPage = () => {
   const { id } = useParams();
   const { dispatch, cart } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [selectedColor, setSelectedColor] = useState(""); // State for selected color
+  const [error, setError] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
-  const cartItem = cart.find((item) => item._id === id);
+  const cartItem = cart.find((item) => item._id === id && item.color === selectedColor);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
+        setLoading(true);
         const res = await apiClient.get(`/products/${id}`);
-        setProduct(res.data.productFound);
-        setSelectedColor(res.data.productFound.colors[0]?.name || ""); // Default to the first color
+        if (res.data.productFound) {
+          setProduct(res.data.productFound);
+          setSelectedColor(
+            res.data.productFound.colors[0]?.name || ""
+          );
+        } else {
+          setError("Product not found");
+        }
       } catch (error) {
         console.error("Error fetching product:", error);
+        setError("Failed to load product details");
       } finally {
         setLoading(false);
       }
@@ -44,78 +43,248 @@ const SingleProductPage = () => {
   }, [id]);
 
   const handleAddToCart = () => {
-    dispatch({ type: "ADD_TO_CART", payload: { ...product, quantity: 1, color: selectedColor } });
+    if (!selectedColor) {
+      toast.warning("Please select a color");
+      return;
+    }
+
+    dispatch({ 
+      type: "ADD_TO_CART", 
+      payload: { 
+        ...product, 
+        quantity,
+        color: selectedColor 
+      } 
+    });
+
+    toast.success("Added to cart!");
   };
 
   const handleIncrement = () => {
-    dispatch({ type: "INCREMENT_QUANTITY", payload: product._id });
+    if (cartItem) {
+      dispatch({ type: "INCREMENT_QUANTITY", payload: { id: product._id, color: selectedColor } });
+    } else {
+      setQuantity(prev => Math.min(prev + 1, product.countInStock));
+    }
   };
 
   const handleDecrement = () => {
-    dispatch({ type: "DECREMENT_QUANTITY", payload: product._id });
+    if (cartItem) {
+      dispatch({ type: "DECREMENT_QUANTITY", payload: { id: product._id, color: selectedColor } });
+    } else {
+      setQuantity(prev => Math.max(prev - 1, 1));
+    }
   };
 
-  if (loading) return <p className="single-loading">Loading...</p>;
-  if (!product) return <p className="single-error">No product details available.</p>;
+  const renderStars = (rating) => {
+    const filledStars = Math.round(Number(rating)) || 0;
+    return (
+      <div className="single-star-rating">
+        {Array.from({ length: 5 }, (_, i) => (
+          i < filledStars 
+            ? <FaStar key={i} className="single-star filled" /> 
+            : <FaRegStar key={i} className="single-star" />
+        ))}
+      </div>
+    );
+  };
+
+  if (loading) return <div className="single-loading">Loading product details...</div>;
+  if (error) return <div className="single-error">{error}</div>;
+  if (!product) return <div className="single-error">Product not found</div>;
 
   return (
     <div className="single-product-wrapper">
-      <h1 className="single-product-title">{product.name}</h1>
+      <div className="single-product-breadcrumb">
+        Home / Products / {product.category} / {product.name}
+      </div>
+
       <div className="single-product-content">
-        <div className="single-product-image">
-          {product.images && product.images.length > 0 ? (
-            <img src={product.images[0]} alt={product.name} />
-          ) : (
-            <div className="single-no-image">No image available</div>
-          )}
+        {/* Image Gallery */}
+        <div className="single-product-gallery">
+          <div className="gallery-thumbnails">
+            {product.images?.map((img, index) => (
+              <div 
+                key={index}
+                className={`thumbnail ${selectedImage === index ? "active" : ""}`}
+                onClick={() => setSelectedImage(index)}
+              >
+                <img src={img} alt={`${product.name} thumbnail ${index + 1}`} />
+              </div>
+            ))}
+          </div>
+
+          <div className="single-product-main-image">
+            {product.images?.length > 0 ? (
+              <img 
+                src={product.images[selectedImage]} 
+                alt={product.name} 
+                className="main-image"
+              />
+            ) : (
+              <div className="single-no-image">No image available</div>
+            )}
+          </div>
         </div>
 
+        {/* Product Info */}
         <div className="single-product-info">
-          <p className="single-product-description">{product.description}</p>
+          <h1 className="single-product-title">{product.name}</h1>
+
+          <div className="single-product-rating-section">
+            {renderStars(Number(product.averageRating))}
+            <span className="rating-value">
+              {Number(product.averageRating || 0).toFixed(1)}
+            </span>
+            <span className="reviews-count">({product.reviews?.length || 0} reviews)</span>
+          </div>
+
           <p className="single-product-price">
-            <strong>Price:</strong> ₦{product.price.toLocaleString()}
+            ₦{product.price.toLocaleString()}
           </p>
-          <p className="single-product-brand">
-            <strong>Brand:</strong> {product.brand}
-          </p>
-          <p className="single-product-category">
-            <strong>Category:</strong> {product.category}
-          </p>
-          <div className="single-product-rating">
-            <strong>Rating:</strong>{" "}
-            {renderStars(isNaN(product.averageRating) ? 0 : product.averageRating)}
+
+          <p className="single-product-description">{product.description}</p>
+
+          <div className="single-product-meta">
+            <p className="single-product-brand">
+              <strong>Brand:</strong> {product.brand}
+            </p>
+            <p className="single-product-category">
+              <strong>Category:</strong> {product.category}
+            </p>
+            <p className="single-product-stock">
+              <strong>Availability:</strong>{" "}
+              <span className={product.countInStock > 0 ? "in-stock" : "out-of-stock"}>
+                {product.countInStock > 0 
+                  ? `${product.countInStock} in stock` 
+                  : "Out of stock"}
+              </span>
+            </p>
           </div>
 
           {/* Color Palette Section */}
           <div className="single-product-colors">
-            <strong>Available Colors:</strong>
+            <strong>Colors:</strong>
             <div className="single-color-palette">
-              {product.colors.map((color) => (
-                <button
-                  key={color._id}
-                  className={`single-color-btn ${
-                    selectedColor === color.name ? "selected" : ""
-                  }`}
-                  style={{ backgroundColor: color.name }}
-                  onClick={() => setSelectedColor(color.name)}
-                >
-                  {selectedColor === color.name && <span className="color-check">✓</span>}
-                </button>
-              ))}
+              {product.colors?.length > 0 ? (
+                product.colors.map((color) => (
+                  <button
+                    key={color._id}
+                    className={`single-color-btn ${
+                      selectedColor === color.name ? "selected" : ""
+                    }`}
+                    style={{ backgroundColor: color.name }}
+                    onClick={() => setSelectedColor(color.name)}
+                    aria-label={`Select color: ${color.name}`}
+                  >
+                    {selectedColor === color.name && <span className="color-check">✓</span>}
+                  </button>
+                ))
+              ) : (
+                <p className="no-colors">No colors available</p>
+              )}
             </div>
           </div>
 
-          {cartItem ? (
-            <div className="single-quantity-selector">
-              <button onClick={handleDecrement}><FaMinus /></button>
-              <span>{cartItem.quantity}</span>
-              <button onClick={handleIncrement}><FaPlus /></button>
+          {/* Quantity and Add to Cart */}
+          <div className="single-product-actions">
+            <div className="quantity-section">
+              <strong>Quantity:</strong>
+              <div className="single-quantity-selector">
+                <button 
+                  onClick={handleDecrement} 
+                  disabled={cartItem?.quantity === 1 || quantity === 1}
+                  aria-label="Decrease quantity"
+                >
+                  <FaMinus />
+                </button>
+                <span>{cartItem ? cartItem.quantity : quantity}</span>
+                <button 
+                  onClick={handleIncrement} 
+                  disabled={
+                    cartItem 
+                      ? cartItem.quantity >= product.countInStock
+                      : quantity >= product.countInStock
+                  }
+                  aria-label="Increase quantity"
+                >
+                  <FaPlus />
+                </button>
+              </div>
             </div>
-          ) : (
-            <button className="single-add-to-cart-btn" onClick={handleAddToCart}>
-              <FaShoppingCart /> Add to Cart
-            </button>
-          )}
+
+            {product.countInStock > 0 ? (
+              cartItem ? (
+                <div className="cart-added-message">
+                  <span>Added to cart</span>
+                  <button 
+                    className="view-cart-btn"
+                    onClick={() => window.location.href = "/cart"}
+                  >
+                    View Cart
+                  </button>
+                </div>
+              ) : (
+                <button 
+                  className="single-add-to-cart-btn" 
+                  onClick={handleAddToCart}
+                  disabled={!selectedColor}
+                >
+                  <FaShoppingCart /> Add to Cart
+                </button>
+              )
+            ) : (
+              <button className="out-of-stock-btn" disabled>
+                Out of Stock
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Product Details Tabs */}
+      <div className="product-details-tabs">
+        <div className="tab active">Description</div>
+        <div className="tab">Specifications</div>
+        <div className="tab">Reviews ({product.reviews?.length || 0})</div>
+
+        <div className="tab-content">
+          <p>{product.description}</p>
+          <div className="product-specs">
+            {product.specifications?.length > 0 ? (
+              <ul>
+                {product.specifications.map((spec, index) => (
+                  <li key={index}>
+                    <strong>{spec.key}:</strong> {spec.value}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No specifications available</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Related Products Section */}
+      <div className="related-products">
+        <h2>You may also like</h2>
+        <div className="related-products-grid">
+          <div className="related-product-card">
+            <div className="related-product-image"></div>
+            <h3>Related Product</h3>
+            <p>₦9,999</p>
+          </div>
+          <div className="related-product-card">
+            <div className="related-product-image"></div>
+            <h3>Related Product</h3>
+            <p>₦9,999</p>
+          </div>
+          <div className="related-product-card">
+            <div className="related-product-image"></div>
+            <h3>Related Product</h3>
+            <p>₦9,999</p>
+          </div>
         </div>
       </div>
     </div>

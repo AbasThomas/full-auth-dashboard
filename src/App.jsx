@@ -22,8 +22,12 @@ import DiscountTab from "./Components/Discount";
 import HeroSection from "./Components/Hero";
 import CartPage from "./Pages/CartPage";
 import DummyPayment from './Pages/DummyPayment'; // Adjust path if different
-
+import ProductsPage from "./Pages/LandingPage.jsx";
+import './App.css';
+import './index.css'; // Import your global styles
 // import PaymentPage from "./Pages/PaymentPage";
+import { ToastContainer } from 'react-toastify';
+import Product from "./Pages/LandingPage.jsx";
 
 const App = () => {
   return (
@@ -33,7 +37,7 @@ const App = () => {
       {/* <HeroSection/> */}
       <Toaster position="top-right" />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/products" element={<Product/>} />
         <Route path="/" element={<ProductPage/>} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<UserRegistrationForm />} />

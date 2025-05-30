@@ -1,0 +1,286 @@
+/* ProductsPage.css */
+
+.products-page {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  line-height: 1.5;
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.logo-highlight {
+  color: #888;
+  font-weight: normal;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.user-cart {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.user-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.user-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.user-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-menu li {
+  padding: 0.5rem 0;
+}
+
+.user-menu li.logout button {
+  background: none;
+  border: none;
+  color: #e00;
+  cursor: pointer;
+}
+
+.cart-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.main-section {
+  padding: 2rem;
+}
+
+.product-grid {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.product-description {
+  margin-bottom: 1rem;
+}
+
+.image-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.arrow-btn {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.quantity-selector {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.quantity-selector button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.add-to-cart {
+  padding: 0.75rem 1.5rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.product-image {
+  flex: 1;
+}
+
+.product-image img {
+  width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-dots {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+.dot.active {
+  background: #000;
+}
+
+.category-section,
+.similar-products,
+.new-arrivals {
+  margin-bottom: 2rem;
+}
+
+.category-grid,
+.product-cards,
+.arrival-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.category-card {
+  position: relative;
+}
+
+.category-card img {
+  width: 100%;
+  display: block;
+  border-radius: 0.5rem;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 0.5rem;
+  text-align: center;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+.product-card .badge {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.arrival-card img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.see-more {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.see-more button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  background: none;
+  cursor: pointer;
+}
+
+.footer {
+  background: #f8f8f8;
+  padding: 2rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-grid h4 {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.footer-grid ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-grid li {
+  margin-bottom: 0.25rem;
+}
+
+.footer-grid a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #888;
+}
