@@ -33,6 +33,7 @@ const App = () => {
       {/* <HeroSection/> */}
       <Toaster position="top-right" />
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/" element={<ProductPage/>} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<UserRegistrationForm />} />
